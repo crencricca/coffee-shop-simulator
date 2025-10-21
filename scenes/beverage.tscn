@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://djbuqgvkxwsgb"]
+
+[ext_resource type="Script" uid="uid://b7a20ymy7erub" path="res://scripts/beverage.gd" id="1_8cjgv"]
+[ext_resource type="Texture2D" uid="uid://bvi8xe4p5wgv1" path="res://assets/Mug.png" id="2_jfwls"]
+[ext_resource type="Texture2D" uid="uid://8h05a2eysnkw" path="res://assets/Beverage_Whip.png" id="3_m0d17"]
+[ext_resource type="Texture2D" uid="uid://bmibapf0rasux" path="res://assets/Beverage_Whip_Sprinkles.png" id="4_ugrwk"]
+[ext_resource type="Texture2D" uid="uid://cxip8kc7juhqs" path="res://assets/Beverage_Sprinkles.png" id="5_ugrwk"]
+[ext_resource type="Texture2D" uid="uid://bg4yalsko8xhg" path="res://assets/UI/Clear.png" id="6_qe4yw"]
+[ext_resource type="FontFile" uid="uid://di37x2v4431hh" path="res://fonts/Minecraft.ttf" id="7_1c0kb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfwls"]
+size = Vector2(134, 128)
+
+[node name="Beverage" type="Area2D"]
+script = ExtResource("1_8cjgv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(67, 64)
+shape = SubResource("RectangleShape2D_jfwls")
+
+[node name="Mug" type="Sprite2D" parent="."]
+position = Vector2(90, 70)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_jfwls")
+
+[node name="Base" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Base"]
+offset_left = 19.0
+offset_top = 30.0
+offset_right = 120.0
+offset_bottom = 42.0
+color = Color(0.701218, 0.686307, 0.677019, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Base"]
+offset_left = 22.0
+offset_top = 27.0
+offset_right = 116.0
+offset_bottom = 31.0
+color = Color(0.701218, 0.686307, 0.677019, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Base"]
+offset_left = 26.0
+offset_top = 23.0
+offset_right = 113.0
+offset_bottom = 27.0
+color = Color(0.701218, 0.686307, 0.677019, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Base"]
+offset_left = 22.0
+offset_top = 42.0
+offset_right = 116.0
+offset_bottom = 46.0
+color = Color(0.701218, 0.686307, 0.677019, 1)
+
+[node name="Toppings" type="Node2D" parent="."]
+
+[node name="Whip" type="Sprite2D" parent="Toppings"]
+visible = false
+position = Vector2(69, 17)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_m0d17")
+
+[node name="Whip and Sprinkles" type="Sprite2D" parent="Toppings"]
+visible = false
+position = Vector2(69, 17)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("4_ugrwk")
+
+[node name="Sprinkles" type="Sprite2D" parent="Toppings"]
+visible = false
+position = Vector2(68, 34)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_ugrwk")
+
+[node name="Clear" type="TextureButton" parent="."]
+z_index = 1
+offset_left = 145.0
+offset_top = 5.0
+offset_right = 3145.0
+offset_bottom = 3005.0
+scale = Vector2(0.01, 0.01)
+texture_normal = ExtResource("6_qe4yw")
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = -85.0
+offset_top = 124.0
+offset_right = 225.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = ExtResource("7_1c0kb")
+fit_content = true
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]

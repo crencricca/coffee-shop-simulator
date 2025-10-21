@@ -1,0 +1,14 @@
+{
+	"Espresso": ["Coffee"],
+	"Latte": ["Coffee", "Milk"],
+	"Macchiato": ["Coffee", "Milk", "Milk"],
+	"Matcha Latte": ["Matcha", "Milk"],
+	"Golden Latte": ["Coffee", "Milk", "Honey"],
+	"Golden Matcha Latte": ["Matcha", "Milk", "Honey"],
+	"Cappuccino": ["Coffee", "Milk", "Whip"],
+	"Matcha Cappuccino": ["Matcha", "Milk", "Whip"],
+	"Golden Cappuccino": ["Coffee", "Milk", "Whip", "Honey"],
+	"Golden Matcha Cappuccino": ["Matcha", "Milk", "Whip", "Honey"],
+	"Rainbow Cappuccino": ["Coffee", "Milk", "Whip", "Sprinkles"],
+	"Rainbow Matcha Cappuccino": ["Matcha", "Milk", "Whip", "Sprinkles"],
+}

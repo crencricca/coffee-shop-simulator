@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcx4apmnljqqg"]
+
+[ext_resource type="Script" uid="uid://edoqwwlqg3cx" path="res://scripts/recipe_book.gd" id="1_yxdbw"]
+[ext_resource type="Texture2D" uid="uid://mc5mu4qsa1hl" path="res://assets/UI/Recipes/Empty notebook.png" id="2_1vfb6"]
+[ext_resource type="Texture2D" uid="uid://bg4yalsko8xhg" path="res://assets/UI/Clear.png" id="2_jfus2"]
+[ext_resource type="Texture2D" uid="uid://cbpo5v57t6hsk" path="res://assets/UI/Next.png" id="3_1vfb6"]
+[ext_resource type="FontFile" uid="uid://di37x2v4431hh" path="res://fonts/Minecraft.ttf" id="3_bhyhu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfus2"]
+size = Vector2(700, 534)
+
+[node name="Recipe Book" type="Area2D"]
+script = ExtResource("1_yxdbw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(391, 375)
+shape = SubResource("RectangleShape2D_jfus2")
+
+[node name="Recipe" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_1vfb6")
+
+[node name="Title" type="RichTextLabel" parent="Recipe"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 592.0
+offset_right = 2528.0
+offset_bottom = 1136.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_bhyhu")
+theme_override_font_sizes/normal_font_size = 264
+text = "No Recipes Discovered!"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="List" type="RichTextLabel" parent="Recipe"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 1188.0
+offset_right = 2564.0
+offset_bottom = 2292.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_bhyhu")
+theme_override_font_sizes/normal_font_size = 204
+fit_content = true
+
+[node name="Next" type="TextureButton" parent="."]
+visible = false
+offset_left = 652.0
+offset_top = 352.0
+offset_right = 3652.0
+offset_bottom = 3352.0
+scale = Vector2(0.015, 0.015)
+texture_normal = ExtResource("3_1vfb6")
+
+[node name="Close" type="TextureButton" parent="."]
+offset_left = 651.0
+offset_top = 152.0
+offset_right = 3651.0
+offset_bottom = 3152.0
+scale = Vector2(0.02, 0.02)
+texture_normal = ExtResource("2_jfus2")
+
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

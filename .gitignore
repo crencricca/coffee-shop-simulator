@@ -1,0 +1,11 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Large audio files
+*.mp3
+*.wav
+*.ogg
+
+# Large font source files
+*.eps

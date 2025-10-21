@@ -1,0 +1,122 @@
+[gd_scene load_steps=14 format=3 uid="uid://dmx7ci35aa6k2"]
+
+[ext_resource type="PackedScene" uid="uid://bq13hj832vei6" path="res://scenes/ingredient.tscn" id="1_3ij0e"]
+[ext_resource type="Texture2D" uid="uid://6mpnl1j8q657" path="res://assets/Backgrounds/Shelf.png" id="1_biqjx"]
+[ext_resource type="Texture2D" uid="uid://dmqmfsw0o200x" path="res://assets/Coffee.png" id="2_pyta6"]
+[ext_resource type="Texture2D" uid="uid://b1lxkhp0mym2i" path="res://assets/Matcha.png" id="3_62non"]
+[ext_resource type="Texture2D" uid="uid://cwovj03u0p3ou" path="res://assets/Milk.png" id="4_biqjx"]
+[ext_resource type="Texture2D" uid="uid://2kflr2xs6qvh" path="res://assets/Whip.png" id="5_rvs66"]
+[ext_resource type="Texture2D" uid="uid://bjlb5er42t8p8" path="res://assets/Honey.png" id="6_777uj"]
+[ext_resource type="Texture2D" uid="uid://bmpvoa20babhi" path="res://assets/Sprinkles.png" id="7_6henj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_biqjx"]
+radius = 82.0
+height = 164.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qklsa"]
+radius = 57.0
+height = 144.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y402t"]
+radius = 60.0
+height = 170.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3w8a"]
+radius = 43.0
+height = 196.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62non"]
+radius = 35.0
+height = 130.0
+
+[node name="CoffeeBar" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -5.0
+offset_top = 55.0
+offset_right = 11655.0
+offset_bottom = 3055.0
+scale = Vector2(0.1, 0.1)
+size_flags_vertical = 0
+texture = ExtResource("1_biqjx")
+
+[node name="Ingredients" type="Node2D" parent="."]
+
+[node name="Coffee" parent="Ingredients" instance=ExtResource("1_3ij0e")]
+position = Vector2(216, 140)
+
+[node name="Sprite2D" parent="Ingredients/Coffee" index="0"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_pyta6")
+
+[node name="CollisionShape2D" parent="Ingredients/Coffee" index="1"]
+visible = false
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_biqjx")
+
+[node name="Matcha" parent="Ingredients" instance=ExtResource("1_3ij0e")]
+position = Vector2(391, 145)
+
+[node name="Sprite2D" parent="Ingredients/Matcha" index="0"]
+position = Vector2(-2.99998, -7)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_62non")
+
+[node name="CollisionShape2D" parent="Ingredients/Matcha" index="1"]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_biqjx")
+
+[node name="Honey" parent="Ingredients" instance=ExtResource("1_3ij0e")]
+position = Vector2(541, 135)
+
+[node name="Sprite2D" parent="Ingredients/Honey" index="0"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_777uj")
+
+[node name="CollisionShape2D" parent="Ingredients/Honey" index="1"]
+visible = false
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_qklsa")
+
+[node name="Milk" parent="Ingredients" instance=ExtResource("1_3ij0e")]
+position = Vector2(676, 135)
+
+[node name="Sprite2D" parent="Ingredients/Milk" index="0"]
+scale = Vector2(0.04, 0.05)
+texture = ExtResource("4_biqjx")
+
+[node name="CollisionShape2D" parent="Ingredients/Milk" index="1"]
+visible = false
+shape = SubResource("CapsuleShape2D_y402t")
+
+[node name="Whip" parent="Ingredients" instance=ExtResource("1_3ij0e")]
+position = Vector2(816, 55)
+
+[node name="Sprite2D" parent="Ingredients/Whip" index="0"]
+position = Vector2(0, 55)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("5_rvs66")
+
+[node name="CollisionShape2D" parent="Ingredients/Whip" index="1"]
+visible = false
+position = Vector2(1, 61)
+shape = SubResource("CapsuleShape2D_r3w8a")
+
+[node name="Sprinkles" parent="Ingredients" instance=ExtResource("1_3ij0e")]
+position = Vector2(946, 152)
+
+[node name="Sprite2D" parent="Ingredients/Sprinkles" index="0"]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("7_6henj")
+
+[node name="CollisionShape2D" parent="Ingredients/Sprinkles" index="1"]
+visible = false
+shape = SubResource("CapsuleShape2D_62non")
+
+[editable path="Ingredients/Coffee"]
+[editable path="Ingredients/Matcha"]
+[editable path="Ingredients/Honey"]
+[editable path="Ingredients/Milk"]
+[editable path="Ingredients/Whip"]
+[editable path="Ingredients/Sprinkles"]

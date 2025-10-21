@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://buurjvc5gnm3f"]
+
+[ext_resource type="Script" uid="uid://bhd30e5s15uxa" path="res://scripts/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dmx7ci35aa6k2" path="res://scenes/coffee_bar.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dfw8ro5gubsas" path="res://assets/Backgrounds/Counter with cabinets.png" id="2_p57ef"]
+[ext_resource type="AudioStream" uid="uid://cinqjiynwx3dp" path="res://assets/Backgrounds/Jazz.mp3" id="2_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://djbuqgvkxwsgb" path="res://scenes/beverage.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bl8817lmynbij" path="res://assets/UI/Recipes/Recipe book.png" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bcx4apmnljqqg" path="res://scenes/recipe_book.tscn" id="5_iywne"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lbhrr")
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u5sy4")
+autoplay = true
+playback_type = 1
+parameters/looping = true
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1158.0
+offset_bottom = 646.0
+
+[node name="BGColor" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 1171.0
+offset_bottom = 656.0
+color = Color(0.733134, 0.639609, 0.531371, 1)
+
+[node name="Counter Left" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = -203.0
+offset_top = 393.0
+offset_right = 2797.0
+offset_bottom = 3393.0
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("2_p57ef")
+
+[node name="Counter Center" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 393.0
+offset_right = 3304.0
+offset_bottom = 3393.0
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("2_p57ef")
+
+[node name="Counter Right" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 393.0
+offset_right = 3813.0
+offset_bottom = 3393.0
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("2_p57ef")
+
+[node name="Recipes Button" type="TextureButton" parent="."]
+offset_left = 12.0
+offset_top = 504.0
+offset_right = 3012.0
+offset_bottom = 3504.0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("3_lnu2h")
+
+[node name="Beverage" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(457, 350)
+scale = Vector2(1.5, 1.5)
+
+[node name="CoffeeBar" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(2, 6)
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+offset_left = -208.0
+offset_right = 1330.0
+offset_bottom = 872.0
+color = Color(0.0705882, 0.0705882, 0.0705882, 0.737255)
+
+[node name="Recipe Book" parent="." instance=ExtResource("5_iywne")]
+visible = false
+z_index = 1
+position = Vector2(299, 35)
+scale = Vector2(0.8, 0.8)
+
+[node name="Next" parent="Recipe Book" index="2"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Close" parent="Recipe Book" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Recipes Button" to="." method="_on_recipes_button_pressed"]
+[connection signal="input_event" from="Beverage" to="Beverage" method="_on_input_event"]
+[connection signal="pressed" from="Recipe Book/Close" to="." method="_on_close_recipe_pressed"]
+
+[editable path="Recipe Book"]
