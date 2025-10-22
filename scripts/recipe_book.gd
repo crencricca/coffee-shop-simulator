@@ -14,15 +14,26 @@ func _ready() -> void:
 	beverage_node.connect("recipe_discovered", _on_recipe_discovered)	
 	_set_recipe()
 
-func _process(delta: float) -> void:
-	if discovered.size() > 1: find_child("Next").show()
-	pass
-
 func _parse_ingredients(list: Array):
 	var result = ''
 	for ingredient in list:
 		result += '- ' + ingredient + '\n'
 	return result
+
+func _update_button_visibility():
+	if discovered.size() <= 1:
+		find_child("Next").hide()
+		find_child("Previous").hide()
+	else:		
+		if current >= discovered.size() - 1:
+			find_child("Next").hide()
+		else:
+			find_child("Next").show()
+		
+		if current <= 0:
+			find_child("Previous").hide()
+		else:
+			find_child("Previous").show()
 
 func _set_recipe():
 	if discovered.size() == 0: return
@@ -30,13 +41,17 @@ func _set_recipe():
 	var list = RECIPES.get(title)
 	recipe_node.find_child("Title").text = title
 	recipe_node.find_child("List").text = _parse_ingredients(list)
-	print(_parse_ingredients(list))
+	if (discovered.size() >= 1): find_child("Number").show()
+	find_child("Number").text = str(current + 1) + " / " + str(RECIPES.size())
+	_update_button_visibility()
 
-func _on_next_pressed()  -> void:
-	if (current >= discovered.size() - 1):
-		current = 0
+func _on_previous_pressed() -> void:
+	if current > 0:
+		current -= 1
 		_set_recipe()
-	else:
+
+func _on_next_pressed() -> void:
+	if current < discovered.size() - 1:
 		current += 1
 		_set_recipe()
 		
